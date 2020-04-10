@@ -16,11 +16,3 @@ def wikipediaSearch(search_text):
 	wiki_content = wiki_page.content
 	response_string += ""+wiki_content[0:wiki_content.find("。")] + "らしいですよbyうぃき"
 	return response_string
-
-
-if __name__ == "__main__":
-	while True:
-		user_input = input("検索したい単語を入力してください。：")
-		if not user_input:
-			break
-		print(wikipediaSearch(user_input))
