@@ -202,7 +202,7 @@ class Main(commands.Cog):
        else:
            fortune_print=["まゆ吉","daidaidaidaikiti"]
        fortune_list=[]
-       directory = os.listdir('picture/fortune')
+       directory = os.listdir('static/picture/fortune')
        directory=sorted(directory)
        for i in directory:
            if i.startswith(fortune_print[1]):
@@ -210,7 +210,7 @@ class Main(commands.Cog):
        text=random.choice(fortune_list)
 
        await ctx.send(fortune_print[0])
-       await ctx.send(file=discord.File(f"picture/fortune/{text}"))
+       await ctx.send(file=discord.File(f"static/picture/fortune/{text}"))
        fortune_judge[str(ctx.author.id)]["fortune"]=True
        with open("json/bot_id.json","w")as f:
            json.dump(fortune_judge, f, indent=3)
@@ -333,42 +333,42 @@ class Main(commands.Cog):
 
       if message.attachments:
           if message.content=="ミリシタコラ":
-              download_img(message.attachments[0].url, "picture/colla/image.png")
+              download_img(message.attachments[0].url, "static/picture/colla/image.png")
               colla.mirikora2()
               await message.delete()
-              await message.channel.send(file=discord.File("picture/colla/new.png"))
+              await message.channel.send(file=discord.File("static/picture/colla/new.png"))
           elif message.content=="バジリスク":
 
-              download_img(message.attachments[0].url, "picture/colla/image.png")
+              download_img(message.attachments[0].url, "static/picture/colla/image.png")
               colla.bazirisuku()
               await message.delete()
-              await message.channel.send(file=discord.File("picture/colla/new.png"))
+              await message.channel.send(file=discord.File("static/picture/colla/new.png"))
           elif message.content=="デレステコラ":
 
-              download_img(message.attachments[0].url, "picture/colla/image.png")
+              download_img(message.attachments[0].url, "static/picture/colla/image.png")
               colla.deresute_kora()
               await message.delete()
-              await message.channel.send(file=discord.File("picture/colla/new.png"))
+              await message.channel.send(file=discord.File("static/picture/colla/new.png"))
           elif message.content=="優しい世界観":
 
-              download_img(message.attachments[0].url, "picture/colla/image.png")
+              download_img(message.attachments[0].url, "static/picture/colla/image.png")
               colla.ppp()
               await message.delete()
-              await message.channel.send(file=discord.File("picture/colla/new.png"))
+              await message.channel.send(file=discord.File("static/picture/colla/new.png"))
           elif message.content=="全員アウト":
 
-              download_img(message.attachments[0].url, "picture/colla/image.png")
+              download_img(message.attachments[0].url, "static/picture/colla/image.png")
               colla.out()
               await message.delete()
-              await message.channel.send(file=discord.File("picture/colla/new.png"))
+              await message.channel.send(file=discord.File("static/picture/colla/new.png"))
 
       if "肇ちゃん" in message.content:
          dice = str(random.randint(1,48))  #出る目を指定
-         await message.channel.send(file=discord.File(f"picture/hajime/{dice.zfill(3)}.jpg"))
+         await message.channel.send(file=discord.File(f"static/picture/hajime/{dice.zfill(3)}.jpg"))
 
       if "ちえり" in message.content:
          dice = str(random.randint(1,48)) #出る目を指定
-         await message.channel.send(file=discord.File(f"picture/chery/{dice.zfill(3)}.jpg"))
+         await message.channel.send(file=discord.File(f"static/picture/chery/{dice.zfill(3)}.jpg"))
 
       if "!random" in message.content:
           text=message.content.split("!random")
@@ -378,4 +378,4 @@ class Main(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(Main(bot)) # TestCogにBotを渡してインスタンス化し、Botにコグとして登録する。
+    bot.add_cog(Main(bot))

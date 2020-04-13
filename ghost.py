@@ -1,4 +1,6 @@
 import traceback  # エラー表示のためにインポート
+import configparser
+import os
 
 from discord.ext import commands  # Bot Commands Frameworkをインポート
 
@@ -32,7 +34,16 @@ class MyBot(commands.Bot):
         print('-----')
 
 
+def main():
+    #configの読み込み
+    base = os.path.dirname(os.path.abspath(__file__))
+    conf_path = os.path.normpath(os.path.join(base))
+    conf = configparser.ConfigParser()
+    conf.read(conf_path+'/config/config.ini', encoding='utf-8')
+
+    bot = MyBot(command_prefix='$')
+    bot.run(conf['DEFAULT']['BOT_TOKEN'])
+
 # MyBotのインスタンス化及び起動処理。
 if __name__ == '__main__':
-    bot = MyBot(command_prefix='!')
-    bot.run('') # Botのトークン
+    main()
