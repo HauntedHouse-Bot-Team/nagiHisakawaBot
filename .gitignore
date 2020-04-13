@@ -1,4 +1,5 @@
 __pycache__
+config/config.ini
 
 # IDE and editor specific files #
 /nbproject
