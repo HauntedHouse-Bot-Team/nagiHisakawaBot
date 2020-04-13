@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[scripts]
+start = "python ghost.py"
+
+[packages]
+discord-py = "*"
+mecab-python3 = "*"
+googletrans = "*"
+pykakasi = "*"
+wikipedia = "*"
+pillow = "*"
+
+[requires]
+python_version = "3.7"
