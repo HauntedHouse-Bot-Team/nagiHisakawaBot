@@ -49,7 +49,7 @@ class Main(commands.Cog):
     @commands.command()
     async def birthday(self, ctx, idol: str):
        """アイドル名を入れると誕生日を出力します"""
-       with open("text/birthday.txt","r")as f:
+       with open("static/textbirthday.txt","r")as f:
             target=f.readline()
             while target:
                 if idol in target:
@@ -76,7 +76,7 @@ class Main(commands.Cog):
 
     @commands.command()
     async def ero(self, ctx):
-       with open("text/ero_block.txt","r")as f:
+       with open("static/textero_block.txt","r")as f:
             text=f.read()
             await ctx.send(text)
 
@@ -98,7 +98,7 @@ class Main(commands.Cog):
 
     @commands.command("俺の誕生日")
     async def my_birthday(self,ctx,text:str):
-       with open("../text/mybirthday.txt","a")as f:
+       with open("../static/textmybirthday.txt","a")as f:
             f.write(text+"by"+ctx.author.display_name+"\n")
        await ctx.send(message.author.mention + "覚えました")
 
@@ -158,7 +158,7 @@ class Main(commands.Cog):
 
     @commands.command()
     async def funny(self, ctx):
-       with open("../text/funny.txt","a")as f:
+       with open("../static/textfunny.txt","a")as f:
           f.write(text+"\n")
        await message.channel.send(text+"を追加しました")
 
